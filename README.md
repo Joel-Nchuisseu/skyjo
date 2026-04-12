@@ -4,3 +4,4 @@
  * [TP1 handout](https://inf2050.uqam.ca/fr/1tp.html)
 
 # pour executer le jeu "java -jar target/Skyjo-jar-with-dependencies.jar"
+## executer le jeu a la racine du projet
