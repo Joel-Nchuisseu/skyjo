@@ -21,7 +21,7 @@ La documentation Javadoc et le JAR ce trouve sur la [page web](https://joel-nchu
 ### Lancer le jeu
 
 ```bash
-java -jar skyjo.jar nom1 nom2
+java -jar Skyjo.jar nom1 nom2
 ```
 
 
@@ -38,13 +38,13 @@ Utilisez les noms réservés suivants pour remplacer un joueur par un robot :
 Exemple avec un humain contre un robot :
 
 ```bash
-java -jar skyjo.jar nom1 Keksli
+java -jar Skyjo.jar nom1 Keksli
 ```
 
 Exemple avec quatre robots :
 
 ```bash
-java -jar skyjo.jar Keksli MadMax Keksli MadMax
+java -jar Skyjo.jar Keksli MadMax Keksli MadMax
 ```
 Exemple avec une seed :
 
