@@ -11,7 +11,7 @@ de mutation et des tests d'intégration basés sur des joueurs robotiques déter
 
 ## Documentation et Téléchargement
 
-La documentation javadoc et le jar ce trouve sur la [page web](https://joel-nchuisseu.github.io/skyjo/).
+La documentation Javadoc et le JAR ce trouve sur la [page web](https://joel-nchuisseu.github.io/skyjo/).
 
 ## Instructions d'exécution
 
@@ -21,24 +21,24 @@ La documentation javadoc et le jar ce trouve sur la [page web](https://joel-nchu
 ### Lancer le jeu
 
 ```bash
-java -jar skyjo.jar Max Ryan
+java -jar skyjo.jar nom1 nom2
 ```
 
-Remplacez `Max` et `Ryan` par les noms des joueurs (2 à 4 joueurs supportés).
 
 ### Joueurs robotiques
 
 Utilisez les noms réservés suivants pour remplacer un joueur par un robot :
 
-| Nom      | Comportement                          |
-|----------|---------------------------------------|
-| `Keksli` | Choisit toujours la première option   |
-| `MadMax` | Choisit une option aléatoire          |
+| Nom      | Niveau        |
+|----------|---------------|
+| `Keksli` | Débutant      |
+| `MadMax` | Intermédiaire |
+| `S38`    | Expert        |
 
 Exemple avec un humain contre un robot :
 
 ```bash
-java -jar skyjo.jar Max Keksli
+java -jar skyjo.jar nom1 Keksli
 ```
 
 Exemple avec quatre robots :
@@ -46,8 +46,13 @@ Exemple avec quatre robots :
 ```bash
 java -jar skyjo.jar Keksli MadMax Keksli MadMax
 ```
+Exemple avec une seed :
+
+```bash
+java -jar Skyjo.jar 5 nom1 nom2 nom3 nom4
+```
 
 ## Contributeurs
 
-- [Joël Stéphane Tchiengang Nchuisseu](mailto:joel.nchuisseu@gmail.com)
+- Joël Stéphane Tchiengang Nchuisseu
 - Hasmik Tadevosyan
