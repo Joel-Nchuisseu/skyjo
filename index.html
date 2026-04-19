@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyjo</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: sans-serif; background: #f5f5f5; color: #1a1a1a; }
+  header { background: #1a1a2e; color: white; padding: 3rem 2rem; text-align: center; }
+  header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+  header p { font-size: 1.1rem; color: #a0a0c0; max-width: 600px; margin: 0 auto 1.5rem; }
+  .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .badge { background: #2d2d50; color: #a0a0c0; padding: 4px 12px; border-radius: 20px; font-size: 13px; }
+  .badge.green { background: #1a3a2a; color: #4caf7d; }
+  .badge.blue { background: #1a2a3a; color: #4a9eff; }
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #e0e0e0; }
+  .card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: #1a1a2e; }
+  .card p { font-size: 0.9rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
+  .btn { display: inline-block; padding: 8px 16px; border-radius: 8px; font-size: 14px; text-decoration: none; font-weight: 500; cursor: pointer; }
+  .btn-primary { background: #1a1a2e; color: white; }
+  section { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #e0e0e0; margin-bottom: 1rem; }
+  section h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #1a1a2e; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+  code { background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; color: #c0392b; }
+  pre { background: #1a1a2e; color: #a0f0a0; padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.9rem; overflow-x: auto; margin: 0.5rem 0 1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 0.5rem; }
+  th { background: #f5f5f5; text-align: left; padding: 8px 12px; font-weight: 600; border-bottom: 2px solid #e0e0e0; }
+  td { padding: 8px 12px; border-bottom: 1px solid #f0f0f0; }
+  .tag { display: inline-block; background: #e8f0fe; color: #1a5296; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin: 2px; }
+  .contributors { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+  .contributor { display: flex; align-items: center; gap: 10px; padding: 0.75rem; background: #f9f9f9; border-radius: 8px; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: #1a1a2e; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0; }
+  .contributor-info p { font-size: 0.85rem; margin: 0; }
+  .contributor-info .name { font-weight: 600; color: #1a1a2e; }
+  .contributor-info .role { color: #888; font-size: 0.8rem; }
+  .quality-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; }
+  .quality-item { background: #f0faf5; border-radius: 8px; padding: 0.75rem; text-align: center; }
+  footer { text-align: center; padding: 1.5rem; color: #888; font-size: 0.85rem; background: white; border-top: 1px solid #e0e0e0; margin-top: 1rem; }
+  p { color: #444; line-height: 1.8; margin-bottom: 0.75rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>&#9824; Skyjo</h1>
+  <p>Implémentation Java du jeu de cartes Skyjo avec interface textuelle, joueurs robotiques et architecture MVC.</p>
+  <div class="badges">
+    <span class="badge green">&#10003; Pipeline CI</span>
+    <span class="badge blue">Java 23</span>
+    <span class="badge">Maven</span>
+    <span class="badge">JUnit 5</span>
+    <span class="badge">INF2050 — UQAM</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">&#128218;</div>
+      <h2>Documentation</h2>
+      <p>Consultez la Javadoc complète générée automatiquement par la pipeline CI.</p>
+      <a href="javadoc/index.html" class="btn btn-primary">Consulter la Javadoc</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#11015;&#65039;</div>
+      <h2>Téléchargement</h2>
+      <p>Téléchargez la dernière version du JAR exécutable incluant toutes les dépendances.</p>
+      <a href="download/Skyjo.jar" class="btn btn-primary" download>Télécharger Skyjo.jar</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#127918;</div>
+      <h2>2 à 4 joueurs</h2>
+      <p>Supporte des parties humaines, robotiques ou mixtes avec des noms dynamiques.</p>
+      <span class="tag">Keksli</span>
+      <span class="tag">MadMax</span>
+      <span class="tag">S38</span>
+      <span class="tag">Humain</span>
+    </div>
+  </div>
+
+  <section>
+    <h2>Contexte du projet</h2>
+    <p>
+      Skyjo est un jeu de cartes multijoueur implémenté en Java dans le cadre du cours
+      <strong>INF2050 — Développement logiciel</strong> à l'UQAM. Le jeu supporte de 2 à 4 joueurs
+      humains ou robotiques, avec une interface textuelle en ligne de commande.
+    </p>
+    <p style="margin-bottom:0;">
+      Le projet respecte une architecture MVC et inclut des tests unitaires, des tests de mutation
+      et des tests d'intégration basés sur des joueurs robotiques déterministes.
+    </p>
+  </section>
+
+  <section>
+    <h2>Instructions d'exécution</h2>
+    <p><strong>Prérequis :</strong> Java 23 ou supérieur</p>
+    <p>Lancer une partie avec 2 à 4 joueurs :</p>
+    <pre>java -jar Skyjo.jar nom1 nom2</pre>
+    <p>Lancer une partie avec une seed déterministe :</p>
+    <pre>java -jar Skyjo.jar 5 nom1 nom2 nom3 nom4</pre>
+    <p>Joueurs robotiques disponibles :</p>
+    <table>
+      <tr><th>Nom</th><th>Comportement</th><th>Niveau</th></tr>
+      <tr><td><code>Keksli</code></td><td>Choisit toujours la première option</td><td>Débutant</td></tr>
+      <tr><td><code>MadMax</code></td><td>Choisit une option aléatoire</td><td>Intermédiaire</td></tr>
+      <tr><td><code>S38</code></td><td>Intelligence artificielle avancée</td><td>Expert</td></tr>
+    </table>
+    <p style="margin-top:1rem;">Exemples :</p>
+    <pre>java -jar Skyjo.jar nom1 Keksli</pre>
+    <pre>java -jar Skyjo.jar Keksli MadMax Keksli S38</pre>
+  </section>
+
+  <section>
+    <h2>Qualité du code</h2>
+    <div class="quality-grid">
+      <div class="quality-item">
+        <div style="font-size:1.4rem;">&#10003;</div>
+        <div style="font-weight:600; font-size:0.85rem; color:#1a1a2e;">Checkstyle</div>
+        <div style="font-size:0.75rem; color:#888;">Complexité &#8804; 7</div>
+      </div>
+      <div class="quality-item">
+        <div style="font-size:1.4rem;">&#10003;</div>
+        <div style="font-weight:600; font-size:0.85rem; color:#1a1a2e;">Couverture</div>
+        <div style="font-size:0.75rem; color:#888;">JaCoCo &#8805; 85%</div>
+      </div>
+      <div class="quality-item">
+        <div style="font-size:1.4rem;">&#10003;</div>
+        <div style="font-weight:600; font-size:0.85rem; color:#1a1a2e;">Mutation</div>
+        <div style="font-size:0.75rem; color:#888;">PIT &#8805; 65%</div>
+      </div>
+      <div class="quality-item">
+        <div style="font-size:1.4rem;">&#10003;</div>
+        <div style="font-weight:600; font-size:0.85rem; color:#1a1a2e;">Javadoc</div>
+        <div style="font-size:0.75rem; color:#888;">100% documenté</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contributeurs</h2>
+    <div class="contributors">
+      <div class="contributor">
+        <div class="avatar">JT</div>
+        <div class="contributor-info">
+          <p class="name">Joël Stéphane Tchiengang Nchuisseu</p>
+          <p class="role">Développeur</p>
+        </div>
+      </div>
+      <div class="contributor">
+        <div class="avatar">HT</div>
+        <div class="contributor-info">
+          <p class="name">Hasmik Tadevosyan</p>
+          <p class="role">Développeure</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  INF2050 — UQAM — 2026 &nbsp;|&nbsp; Généré automatiquement par la pipeline CI
+</footer>
+
+</body>
+</html>
