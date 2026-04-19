@@ -9,15 +9,9 @@ textuelle en ligne de commande.
 Le projet respecte une architecture MVC et inclut des tests unitaires, des tests
 de mutation et des tests d'intégration basés sur des joueurs robotiques déterministes.
 
-## Documentation
+## Documentation et Téléchargement
 
-La documentation Javadoc complète est disponible ici :
-[Consulter la Javadoc]()
-
-## Téléchargement
-
-Téléchargez la dernière version du JAR ici :
-[Télécharger skyjo.jar]()
+La documentation javadoc et le jar ce trouve sur la [page web](https://joel-nchuisseu.github.io/skyjo/).
 
 ## Instructions d'exécution
 
@@ -27,38 +21,33 @@ Téléchargez la dernière version du JAR ici :
 ### Lancer le jeu
 
 ```bash
-java -jar Skyjo.jar nom1 nom2
+java -jar skyjo.jar Max Ryan
 ```
+
+Remplacez `Max` et `Ryan` par les noms des joueurs (2 à 4 joueurs supportés).
 
 ### Joueurs robotiques
 
 Utilisez les noms réservés suivants pour remplacer un joueur par un robot :
 
-| Nom      | Comportement                                   |
-|----------|------------------------------------------------|
-| `Keksli` | Choisit toujours la première option (Débutant) |
-| `MadMax` | Choisit une option aléatoire (Intermédiaire)   |
-| `S38`    | AI (Expert)                                    |
+| Nom      | Comportement                          |
+|----------|---------------------------------------|
+| `Keksli` | Choisit toujours la première option   |
+| `MadMax` | Choisit une option aléatoire          |
 
 Exemple avec un humain contre un robot :
 
 ```bash
-java -jar Skyjo.jar nom1 Keksli
+java -jar skyjo.jar Max Keksli
 ```
 
 Exemple avec quatre robots :
 
 ```bash
-java -jar Skyjo.jar Keksli MadMax Keksli S38
-```
-
-Exemple avec une seed :
-
-```bash
-java -jar Skyjo.jar 5 nom1 nom2 nom3 nom4
+java -jar skyjo.jar Keksli MadMax Keksli MadMax
 ```
 
 ## Contributeurs
 
-- Joël Stéphane Tchiengang Nchuisseu
+- [Joël Stéphane Tchiengang Nchuisseu](mailto:joel.nchuisseu@gmail.com)
 - Hasmik Tadevosyan
