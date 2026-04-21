@@ -47,8 +47,6 @@ public class Launcher {
       
       Ex: java -jar Skyjo.jar 5 nom1 S38 MadMax Keksli
       Ex: java -jar Skyjo.jar nom1 nom2 nom3
-
-      MODIFICATION
       """;
 
 
