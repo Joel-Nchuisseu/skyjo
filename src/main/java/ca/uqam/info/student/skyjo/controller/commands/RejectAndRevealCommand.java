@@ -7,8 +7,12 @@ import ca.uqam.info.max.skyjo.model.SkyjoModel;
 import ca.uqam.info.max.skyjo.model.SkyjoModelReadOnly;
 
 /**
- * Cette classe permet de rejeter la carte dans le buffer et reveler une carte dans la matrice.
- */
+ * Commande permettant de rejeter la carte en buffer sur la pile de défausse
+ * et de révéler une carte cachée du joueur à la position spécifiée.
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ **/
 public class RejectAndRevealCommand implements Command {
   private final SkyjoModel model;
   private final int joueur;
@@ -16,7 +20,7 @@ public class RejectAndRevealCommand implements Command {
   private final int colonne;
 
   /**
-   * Constructeur qui permet de rejeter la carte dans le buffer et reveler une
+   * Constructeur qui permet de rejeter la carte dans le buffer et révéler une
    * carte de la matrice.
    *
    * @param model   le model du jeu.

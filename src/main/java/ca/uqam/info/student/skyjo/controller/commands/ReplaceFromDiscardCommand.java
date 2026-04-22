@@ -7,8 +7,12 @@ import ca.uqam.info.max.skyjo.model.SkyjoModel;
 import ca.uqam.info.max.skyjo.model.SkyjoModelReadOnly;
 
 /**
- * Cette classe permet de remplacer la carte d'un joueur par la carte dans la défausse.
- */
+ * Commande permettant de remplacer directement une carte du joueur
+ * par la carte au sommet de la pile de défausse.
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ **/
 public class ReplaceFromDiscardCommand implements Command {
   private final boolean isUndoAble;
   private final SkyjoModel model;
@@ -17,7 +21,7 @@ public class ReplaceFromDiscardCommand implements Command {
   private final int ligne;
 
   /**
-   * La commande permettant de remplacer une carte par celle dans la défausse.
+   * Constructeur de la commande permettant de remplacer une carte par celle dans la défausse.
    *
    * @param model   le model.
    * @param joueur  l'indice du joueur.

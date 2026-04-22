@@ -5,8 +5,12 @@ import ca.uqam.info.max.skyjo.model.SkyjoModel;
 import ca.uqam.info.max.skyjo.model.SkyjoModelReadOnly;
 
 /**
- * Cette classe est la commande qui permet de terminer le jeu.
- */
+ * Commande permettant de terminer la partie lorsque qu'un joueur
+ * a révélé toutes ses cartes et que les autres joueurs ont joué leur dernier coup.
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ **/
 public class EndGameCommand implements Command {
   private final SkyjoModel model;
 

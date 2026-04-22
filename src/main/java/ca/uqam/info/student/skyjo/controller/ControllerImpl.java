@@ -5,7 +5,6 @@ import ca.uqam.info.max.skyjo.controller.Controller;
 import ca.uqam.info.max.skyjo.controller.ModelFactory;
 import ca.uqam.info.max.skyjo.controller.ModelObserver;
 import ca.uqam.info.max.skyjo.controller.ModelPreset;
-import ca.uqam.info.max.skyjo.model.SkyjoModel;
 import ca.uqam.info.max.skyjo.model.SkyjoModelReadOnly;
 import ca.uqam.info.student.skyjo.controller.commands.EndGameCommand;
 import ca.uqam.info.student.skyjo.controller.commands.EndTurnCommand;
@@ -25,8 +24,15 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Classe implémentant l'interface Controller.
- */
+ * Implémentation concrète de l'interface {@link ca.uqam.info.max.skyjo.controller.Controller}.
+ * Gère le déroulement d'une partie Skyjo selon l'architecture Blackboard :
+ * des commandes disponibles sont proposées au joueur courant, qui en sélectionne une
+ * pour faire progresser l'état du jeu.
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ * @see ca.uqam.info.max.skyjo.controller.Controller
+ **/
 public class ControllerImpl implements Controller {
   private int gameEnder = -1;
   private int lastRound = -1;

@@ -6,20 +6,24 @@ import ca.uqam.info.max.skyjo.model.SkyjoModel;
 import ca.uqam.info.max.skyjo.model.SkyjoModelReadOnly;
 
 /**
- * Cette classe est la commande permettant d'éliminer une ligne de la matrice d'un joueur.
- */
+ * Commande permettant d'éliminer une colonne complète de la matrice d'un joueur
+ * lorsque toutes ses cartes sont révélées et possèdent la même valeur numérique.
+ * Les cartes éliminées sont déposées sur la pile de défausse.
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ **/
 public class ReduceColumnCommand implements Command {
-
-  private SkyjoModel model;
-  private int joueur;
-  private int colonne;
+  private final SkyjoModel model;
+  private final int joueur;
+  private final int colonne;
 
   /**
    * Constructeur de la commande permettant d'éliminer une colonne.
    *
-   * @param model  le model du jeu en accès écriture
-   * @param joueur l'indice du joueur
-   * @param colonne  l'indice de la colonne
+   * @param model   le model du jeu en accès écriture
+   * @param joueur  l'indice du joueur
+   * @param colonne l'indice de la colonne
    */
   public ReduceColumnCommand(SkyjoModelReadOnly model, int joueur, int colonne) {
     this.model = (SkyjoModel) model;

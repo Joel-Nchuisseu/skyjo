@@ -11,8 +11,18 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Classe implémentant l'interface SkyjoModel.
- */
+ * Implémentation concrète de l'interface {@link ca.uqam.info.max.skyjo.model.SkyjoModel}.
+ * Gère l'état complet d'une session de jeu Skyjo : matrices de cartes des joueurs,
+ * pile de pioche, pile de défausse, carte tampon et progression des tours.
+ *
+ * <p>Le modèle est conçu pour être manipulé exclusivement via le contrôleur,
+ * conformément au patron MVC. Toute modification d'état transite par les commandes
+ * définies dans le package {@code controller.commands}.</p>
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ * @see ca.uqam.info.max.skyjo.model.SkyjoModel
+ **/
 public class SkyjoModelImpl implements SkyjoModel {
   // ATTRIBUTS D'INSTANCES
   // matrices
@@ -57,10 +67,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     setStartPlayer();
   }
 
-  /**
-   * Initialiser les attributs d'instance.
-   *
-   */
   private void initialiser() {
     pile = new Stack<>();
     pileCartesRejetees = new Stack<>();
@@ -72,12 +78,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     cartesRevelees = new boolean[nbJoueurs][nbColonnes][nbLignes];
   }
 
-  /**
-   * Valide que le modelPrest et playerNames ne sont pas null.
-   *
-   * @param modelPrest  le preset pour le model.
-   * @param playerNames les noms des joueurs.
-   */
   private void validerParam(ModelPreset modelPrest, String[] playerNames) {
     if (modelPrest != null) {
       nbColonnes = modelPrest.getSizeX();
@@ -93,12 +93,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Ordonner du plus petit au plus grand les cartes dans la pile.
-   *
-   * @param tmp la pile temporaire.
-   * @return retourne la pile temporaire.
-   */
   private List<Card> ordonnerCartes(List<Card> tmp) {
     // ajouter 5 fois -2, 10 fois -1, 15 fois 0 et 10 fois les cartes de 1 à 12 dans la pile
     ajouterCartesDansPile(tmp, 5, -2);
@@ -110,12 +104,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     return tmp;
   }
 
-  /**
-   * Distribuer les cartes.
-   *
-   * @param seed l'indicateur pour le shuffle.
-   * @param tmp  la pile temporaire.
-   */
   private void distribution(Random seed, List<Card> tmp) {
     if (seed != null) {
       // shuffle
@@ -127,9 +115,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     distribuerCartesJoueurs(seed);
   }
 
-  /**
-   * Distribuer les cartes aux joueurs, puis mettre une carte dans la défausse.
-   */
   private void distribuerCartesJoueurs(Random seed) {
     // distribution des cartes aux joueurs
     for (int joueur = 0; joueur < nbJoueurs; joueur++) {
@@ -145,11 +130,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     pileCartesRejetees.push(pile.pop());
   }
 
-  /**
-   * Révéler les cartes.
-   *
-   * @param seed la variable pseudo-aléatoire pour générer la position des cartes à révéler.
-   */
   private void revealCard(Random seed) {
     for (int joueur = 0; joueur < nbJoueurs; joueur++) {
       if (seed == null) {
@@ -162,12 +142,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Générer la position des cartes à révéler.
-   *
-   * @param seed   la variable pseudo-aléatoire pour générer la position des cartes à révéler.
-   * @param joueur l'indice du joueur.
-   */
   private void revealedRandomCard(Random seed, int joueur) {
     while (true) {
       int x = seed.nextInt(0, nbColonnes);
@@ -179,33 +153,18 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Recopier la pile temporaire dans la pile.
-   *
-   * @param tmp la pile temporaire.
-   */
   private void recopierDansPile(List<Card> tmp) {
     for (Card c : tmp) {
       pile.push(c);
     }
   }
 
-  /**
-   * Ajouter une carte X fois au-dessus de la pile.
-   *
-   * @param pile   la pile de carte.
-   * @param nbFois le nombre de fois à ajouter la carte.
-   * @param valeur la valeur de la carte à ajouter.
-   */
   private void ajouterCartesDansPile(List<Card> pile, int nbFois, int valeur) {
     for (int i = 0; i < nbFois; i++) {
       pile.add(new CardImpl(valeur));
     }
   }
 
-  /**
-   * Trouver le trouver qui commence.
-   */
   private void setStartPlayer() {
     int[] scores = getPlayerScores();
     int max = 0;
@@ -255,7 +214,7 @@ public class SkyjoModelImpl implements SkyjoModel {
    * Verifier si la colonne peut être supprimer.
    *
    * @param playerIndex l'indice du joueur
-   * @param colIndex l'indice de la colonne
+   * @param colIndex    l'indice de la colonne
    * @return retourne true si la colonne peut être supprimée sinon false
    */
   public boolean colonneSupprimable(int playerIndex, int colIndex) {
@@ -283,23 +242,10 @@ public class SkyjoModelImpl implements SkyjoModel {
     return rep;
   }
 
-  /**
-   * Valide si deux cartes n'ont pas la même valeur.
-   *
-   * @param carte1 la première carte.
-   * @param carte2 la deuxième carte.
-   * @return Retourne true si les deux cartes n'ont pas la même valeur.
-   */
   private boolean pasMemeValeur(Card carte1, Card carte2) {
     return carte1.getValue() != carte2.getValue();
   }
 
-  /**
-   * Valide si l'indice du joueur est valide.
-   *
-   * @param playerIndex l'indice du joueur.
-   * @return retourne true si l'indice est valide, sinon false.
-   */
   private boolean playerIndexIsValid(int playerIndex) {
     if (playerIndex >= 0 && playerIndex < nbJoueurs) {
       return true;
@@ -308,26 +254,11 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Valide si la position de la carte est valide.
-   *
-   * @param playerIndex l'indice du joueur.
-   * @param colIndex    l'indice de la colonne.
-   * @param rowIndex    l'indice de la ligne.
-   * @return retourne true si la position est valide sinon false.
-   */
   private boolean cardPositionIsValid(int playerIndex, int colIndex, int rowIndex) {
     return playerIndexIsValid(playerIndex) && colIndexIsValid(playerIndex, colIndex)
         && rowIndexIsValid(playerIndex, rowIndex);
   }
 
-  /**
-   * Valide si l'indice de la colonne est valide.
-   *
-   * @param playerIndex l'indice du joueur.
-   * @param colIndex    l'indice de la colonne
-   * @return retourne true si l'indice est valide sinon false.
-   */
   private boolean colIndexIsValid(int playerIndex, int colIndex) {
     if (playerIndexIsValid(playerIndex) && colIndex >= 0
         && colIndex < getCurrentDimensionsX(playerIndex)) {
@@ -337,13 +268,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Valide si l'indice de la ligne est valide.
-   *
-   * @param playerIndex l'indice du joueur.
-   * @param rowIndex    l'indice de la ligne.
-   * @return retourne true si l'indice est valide sinon false.
-   */
   private boolean rowIndexIsValid(int playerIndex, int rowIndex) {
     if (playerIndexIsValid(playerIndex) && rowIndex >= 0
         && rowIndex < getCurrentDimensionsY(playerIndex)) {
@@ -353,16 +277,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Recopier les lignes suivant la ligne à restaurer.
-   *
-   * @param playerIndex                  l'indice du joueur.
-   * @param rowIndex                     l'indice de la ligne.
-   * @param nbLignes                     le nombre de lignes.
-   * @param nbColonnes                   le nombre de colonnes.
-   * @param nouvelleGrilleCartesJoueurs  la matrice des cartes.
-   * @param nouvelleGrilleCartesRelevees la matrice des cartes révélées.
-   */
   private void recopierLignesSuivantes(int playerIndex, int rowIndex, int nbLignes, int nbColonnes,
                                        Card[][] nouvelleGrilleCartesJoueurs,
                                        boolean[][] nouvelleGrilleCartesRelevees) {
@@ -374,15 +288,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Recopier la ligne à restaurer.
-   *
-   * @param rowIndex                     l'indice de la ligne.
-   * @param cards                        les cartes à restaurer.
-   * @param nbColonnes                   le nombres de colonnes.
-   * @param nouvelleGrilleCartesJoueurs  la matrice des cartes.
-   * @param nouvelleGrilleCartesRelevees la matrice des cartes révélées.
-   */
   private static void recopierLigne(int rowIndex, Card[] cards, int nbColonnes,
                                     Card[][] nouvelleGrilleCartesJoueurs,
                                     boolean[][] nouvelleGrilleCartesRelevees) {
@@ -392,15 +297,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Recopier la ligne à restaurer et retourne les cartes supprimées.
-   *
-   * @param playerIndex  l'indice de joueur.
-   * @param rowIndex     l'indice de la ligne.
-   * @param nbColonnes   le nombre de colonnes.
-   * @param cardsRemoved les cartes supprimées
-   * @return retourne les cartes supprimées.
-   */
   private Card[] recopierLigne(int playerIndex, int rowIndex, int nbColonnes, Card[] cardsRemoved) {
     for (int x = 0; x < nbColonnes; x++) {
       cardsRemoved[x] = cartesJoueurs[playerIndex][x][rowIndex];
@@ -408,15 +304,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     return cardsRemoved;
   }
 
-  /**
-   * Recopier les lignes précédant la ligne à restaurer.
-   *
-   * @param playerIndex                  l'indice de joueur.
-   * @param rowIndex                     l'indice de la ligne.
-   * @param nbColonnes                   le nombre de colonnes.
-   * @param nouvelleGrilleCartesJoueurs  la matrice des cartes.
-   * @param nouvelleGrilleCartesRelevees la matrice des cartes révélées.
-   */
   private void recopierLignesPrecedentes(int playerIndex, int rowIndex, int nbColonnes,
                                          Card[][] nouvelleGrilleCartesJoueurs,
                                          boolean[][] nouvelleGrilleCartesRelevees) {
@@ -428,16 +315,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Recopier les colonnes suivant la colonne à restaurer.
-   *
-   * @param playerIndex                  l'indice du joueur.
-   * @param colIndex                     l'indice de la colonne.
-   * @param nbColonnes                   le nombre de colonnes.
-   * @param nbLignes                     le nombre de lignes.
-   * @param nouvelleGrilleCartesJoueurs  la matrice des cartes.
-   * @param nouvelleGrilleCartesRelevees la matrice des cartes révélées.
-   */
   private void recopierColonnesSuivantes(int playerIndex, int colIndex, int nbColonnes,
                                          int nbLignes,
                                          Card[][] nouvelleGrilleCartesJoueurs,
@@ -450,15 +327,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Recopier la colonne des cartes à restaurer.
-   *
-   * @param colIndex                     l'indice de la colonne.
-   * @param cards                        les carts à restaurer.
-   * @param nbLignes                     le nombre de lignes.
-   * @param nouvelleGrilleCartesJoueurs  la matrice des cartes.
-   * @param nouvelleGrilleCartesRelevees la matrice des cartes révélées.
-   */
   private void recopierColonne(int colIndex, Card[] cards, int nbLignes,
                                Card[][] nouvelleGrilleCartesJoueurs,
                                boolean[][] nouvelleGrilleCartesRelevees) {
@@ -468,15 +336,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Recopier la colonne des cartes supprimées.
-   *
-   * @param playerIndex  l'indice du joueur.
-   * @param colIndex     l'indice de la colonne.
-   * @param nbLignes     le nombre de lignes.
-   * @param cardsRemoved les cartes supprimées.
-   * @return retourne les cartes supprimées.
-   */
   private Card[] recopierColonne(int playerIndex, int colIndex, int nbLignes, Card[] cardsRemoved) {
     for (int y = 0; y < nbLignes; y++) {
       cardsRemoved[y] = cartesJoueurs[playerIndex][colIndex][y];
@@ -484,15 +343,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     return cardsRemoved;
   }
 
-  /**
-   * Recopier les colonnes.
-   *
-   * @param playerIndex                  l'indice du joueur.
-   * @param colIndex                     l'indice de la colonne.
-   * @param nbLignes                     le nombre de lignes.
-   * @param nouvelleGrilleCartesJoueurs  la matrice des cartes.
-   * @param nouvelleGrilleCartesRelevees la matrice des cartes révélées.
-   */
   private void recopierColonnesPrecedentes(int playerIndex, int colIndex, int nbLignes,
                                            Card[][] nouvelleGrilleCartesJoueurs,
                                            boolean[][] nouvelleGrilleCartesRelevees) {
@@ -504,16 +354,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Recopier les lignes suivant la ligne à supprimer.
-   *
-   * @param playerIndex                  l'indice du joueur.
-   * @param rowIndex                     l'indice de la ligne.
-   * @param nbLignes                     le nombre de lignes.
-   * @param nbColonnes                   le nombre de colonnes.
-   * @param nouvelleGrilleCartesJoueurs  la matrice des cartes.
-   * @param nouvelleGrilleCartesRelevees la matrice des cartes révélées.
-   */
   private void recopierLignesSuivantesE(int playerIndex, int rowIndex, int nbLignes, int nbColonnes,
                                         Card[][] nouvelleGrilleCartesJoueurs,
                                         boolean[][] nouvelleGrilleCartesRelevees) {
@@ -525,16 +365,6 @@ public class SkyjoModelImpl implements SkyjoModel {
     }
   }
 
-  /**
-   * Recopier les colonnes suivant la colonne à supprimer.
-   *
-   * @param playerIndex                  l'indice du joueur.
-   * @param colIndex                     l'indice de la colonne.
-   * @param nbColonnes                   le nombre de colonnes.
-   * @param nbLignes                     le nombre de lignes.
-   * @param nouvelleGrilleCartesJoueurs  la matrice des cartes.
-   * @param nouvelleGrilleCartesRelevees la matrice des cartes révélées.
-   */
   private void recopierColonnesSuivantesE(int playerIndex, int colIndex, int nbColonnes,
                                           int nbLignes,
                                           Card[][] nouvelleGrilleCartesJoueurs,
@@ -937,5 +767,4 @@ public class SkyjoModelImpl implements SkyjoModel {
       nbCoupsJoues = 0;
     }
   }
-
 }

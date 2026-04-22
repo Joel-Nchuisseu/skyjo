@@ -8,7 +8,12 @@ import ca.uqam.info.student.skyjo.model.SkyjoModelImpl;
 import java.util.Random;
 
 /**
- * Classe implémentant le ModelFactory.
+ * Implémentation concrète de l'interface {@link ca.uqam.info.max.skyjo.controller.ModelFactory}.
+ * Responsable de l'instanciation du model du jeu Skyjo.
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ * @see ca.uqam.info.max.skyjo.controller.ModelFactory
  */
 public class ModelFactoryImpl implements ModelFactory {
   /**

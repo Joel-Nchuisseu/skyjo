@@ -6,8 +6,13 @@ import ca.uqam.info.max.skyjo.model.ModelAccessException;
 import ca.uqam.info.max.skyjo.model.SkyjoModel;
 
 /**
- * Cette classe permet de remplacer une carte de la matrice par la carte dans le buffer.
- */
+ * Commande permettant de remplacer une carte du joueur par celle en buffer,
+ * précédemment piochée depuis le deck via {@link RevealDeckCardCommand}.
+ * L'ancienne carte du joueur est déposée sur la pile de défausse.
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ **/
 public class ReplaceFromBufferCommand implements Command {
   private final boolean isUndoAble;
   private final SkyjoModel model;

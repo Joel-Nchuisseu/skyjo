@@ -8,10 +8,12 @@ import ca.uqam.info.max.skyjo.view.CommandSelector;
 import java.util.ArrayList;
 
 /**
- * Joueur robotique s38.
+ * Joueur robotique implémentant une stratégie de sélection de commandes
+ * basée sur l'analyse de l'état courant du modèle Skyjo qui a pour but
+ * de minimiser les cartes avec les plus grandes valeurs.
  *
- * @author Joel Stephane Tchiengang Nchuisseu (TCHJ90020608)
- */
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ **/
 @SuppressWarnings("checkstyle:CyclomaticComplexity")
 public class S38 implements CommandSelector {
   private final SkyjoModelReadOnly model;
@@ -39,7 +41,7 @@ public class S38 implements CommandSelector {
     columns = model.getCurrentDimensionsX(player);
     rows = model.getCurrentDimensionsY(player);
     findHighestCardValue();
-    findFirstUnRevealed(commands);
+    findFirstUnRevealed();
     // end turn ou reduce
     if (commands[0].toString().equalsIgnoreCase("End turn.")
         || commands[0].toString().contains("Reduce")) {
@@ -166,7 +168,7 @@ public class S38 implements CommandSelector {
     return indice;
   }
 
-  private void findFirstUnRevealed(Command[] cmds) {
+  private void findFirstUnRevealed() {
     for (int y = 0; y < rows; y++) {
       for (int x = 0; x < columns; x++) {
         if (!model.isPlayerCardAtPositionRevealed(player, x, y)) {

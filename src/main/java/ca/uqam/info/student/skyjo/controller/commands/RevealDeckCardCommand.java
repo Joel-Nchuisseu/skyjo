@@ -6,8 +6,12 @@ import ca.uqam.info.max.skyjo.model.SkyjoModelReadOnly;
 import java.util.ArrayList;
 
 /**
- * Cette classe permet de prendre la carte au-dessus de la pile.
- */
+ * Commande permettant de piocher la carte du dessus du deck et de la placer dans le buffer.
+ * Correspond à l'action "Reveal deck card" dans l'interface textuelle.
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ **/
 public class RevealDeckCardCommand implements Command {
   private final SkyjoModel model;
 

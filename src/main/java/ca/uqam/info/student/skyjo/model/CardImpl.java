@@ -5,7 +5,22 @@ import ca.uqam.info.max.skyjo.model.CardType;
 import ca.uqam.info.max.skyjo.model.ModelAccessException;
 
 /**
- * Classe implémentant l'interface Card.
+ * Implémentation concrète de l'interface {@link ca.uqam.info.max.skyjo.model.Card}.
+ * Représente une carte Skyjo dont la valeur est comprise entre -2 et 12 inclusivement.
+ *
+ * <p>Le type de la carte est déterminé automatiquement à partir de sa valeur numérique
+ * selon les règles suivantes :</p>
+ * <ul>
+ *   <li>Valeur {@code < 0} → {@code NUMERIC_NEGATIVE}</li>
+ *   <li>Valeur {@code == 0} → {@code NUMERIC_NEUTRAL}</li>
+ *   <li>Valeur entre {@code 1} et {@code 4} → {@code NUMERIC_POSITIVE_LIGHT}</li>
+ *   <li>Valeur entre {@code 5} et {@code 8} → {@code NUMERIC_POSITIVE_MODERATE}</li>
+ *   <li>Valeur entre {@code 9} et {@code 12} → {@code NUMERIC_POSITIVE_HEAVY}</li>
+ * </ul>
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ * @see ca.uqam.info.max.skyjo.model.CardType
  */
 public class CardImpl implements Card {
   // ATTRIBUTS
@@ -39,12 +54,7 @@ public class CardImpl implements Card {
     return this.valeur;
   }
 
-  /**
-   * Initialise l'attribut valeur avec la valeur passée en paramètre.
-   *
-   * @param valeur la valeur.
-   */
-  public void setValue(int valeur) {
+  private void setValue(int valeur) {
     // lancer exception si valeur hors borne
     if (valeur < -2 || valeur > 12) {
       throw new RuntimeException("Erreur, la valeur doit être entre -2 et 12.");

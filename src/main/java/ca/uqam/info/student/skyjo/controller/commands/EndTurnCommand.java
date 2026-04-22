@@ -5,10 +5,13 @@ import ca.uqam.info.max.skyjo.model.SkyjoModel;
 import ca.uqam.info.max.skyjo.model.SkyjoModelReadOnly;
 
 /**
- *  Cette classe permet de passer au joueur suivant.
- */
+ * Commande permettant de céder le tour au joueur suivant.
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ **/
 public class EndTurnCommand implements Command {
-  private SkyjoModel model;
+  private final SkyjoModel model;
 
   /**
    * Constructeur de la commande qui permet de passer au joueur suivant.

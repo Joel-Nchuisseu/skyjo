@@ -3,18 +3,22 @@ package ca.uqam.info.student.skyjo.controller.commands;
 import ca.uqam.info.max.skyjo.controller.Command;
 
 /**
- * Cette classe crée un space holder "---" pour indiquer qu'il n'y a pas de commande a cette option.
- */
+ * Commande décorative sans action associée, utilisée pour l'alignement visuel
+ * de la grille de commandes dans l'interface textuelle "---".
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ **/
 public class SpaceHolderCommand implements Command {
+  /**
+   * Constructeur du space holder.
+   */
+  public SpaceHolderCommand() {
+  }
+
   @Override
   public boolean isSpaceholder() {
     return true;
-  }
-
-  /**
-   * Constructeur par default du space holder.
-   */
-  public SpaceHolderCommand() {
   }
 
   @Override

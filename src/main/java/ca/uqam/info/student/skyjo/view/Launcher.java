@@ -10,27 +10,39 @@ import ca.uqam.info.max.skyjo.view.TextualCommandSelector;
 import ca.uqam.info.max.skyjo.view.TextualVisualizer;
 import ca.uqam.info.student.skyjo.ai.S38;
 import ca.uqam.info.student.skyjo.controller.ControllerImpl;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
 /**
- * Cette classe permet de lancer le jeu.
+ * Point d'entrée principal de l'application Skyjo.
+ * Gère le démarrage d'une session de jeu en analysant les arguments
+ * fournis en ligne de commande, en configurant les joueurs humains
+ * et robotiques, puis en gérant la boucle de jeu.
+ *
+ * <p>Usage :</p>
+ * <pre>
+ *   java -jar Skyjo.jar [seed]? [joueur][joueur]+
+ * </pre>
+ *
+ * <p>Les noms réservés suivants instancient automatiquement un joueur robotique :</p>
+ * <ul>
+ *   <li>{@code Keksli} — sélectionne toujours la première option disponible (niveau débutant)</li>
+ *   <li>{@code MadMax} — sélectionne une option aléatoirement (niveau intermédiaire)</li>
+ *   <li>{@code S38}    — stratégie basée sur l'analyse de l'état du modèle (niveau expert)</li>
+ * </ul>
+ *
+ * @author Joël Stéphane Tchiengang Nchuisseu
+ * @author Hasmik Tadevosyan
+ * @see ca.uqam.info.student.skyjo.controller.ControllerImpl
+ * @see ca.uqam.info.max.skyjo.view.CommandSelector
  */
 public class Launcher {
   /**
-   * le controller.
+   * Instance du contrôleur gérant l'état de la session de jeu en cours.
    */
   public static Controller controller;
   private static CommandSelector[] joueurs;
-  /**
-   * Les noms des joueurs.
-   */
   private static String[] playerNames;
-  /**
-   * La seed.
-   */
   private static Integer seed;
   private static final String MSG_ERR = """
       
@@ -84,9 +96,13 @@ public class Launcher {
   }
 
   /**
-   * La méthode main qui éxécute le jeu.
+   * Point d'entrée principal de l'application.
+   * Initialise la configuration à partir des arguments, crée le contrôleur,
+   * configure les joueurs humains et robotiques, enregistre le visualiseur
+   * textuel comme observateur du modèle, puis lance la boucle de jeu.
    *
-   * @param args les arguments pour lancer le jeu.
+   * @param args les arguments de la ligne de commande contenant optionnellement
+   *             une graine suivie des noms des joueurs (2 à 4).
    */
   public static void main(String[] args) {
 
