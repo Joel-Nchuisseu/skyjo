@@ -46,7 +46,7 @@
 
 <header>
   <h1>&#9824; Skyjo</h1>
-  <p>Implémentation Java du jeu de cartes Skyjo avec interface textuelle, joueurs robotiques et architecture MVC.</p>
+  <p>Implémentation Java du jeu de société Skyjo avec interface textuelle, joueurs robotiques et architecture MVC.</p>
   <div class="badges">
     <span class="badge green">&#10003; Pipeline CI</span>
     <span class="badge blue">Java 23</span>
@@ -62,13 +62,13 @@
     <div class="card">
       <div class="card-icon">&#128218;</div>
       <h2>Documentation</h2>
-      <p>Consultez la Javadoc complète générée automatiquement par la pipeline CI.</p>
+      <p>Consultez la Javadoc complète.</p>
       <a href="javadoc/index.html" class="btn btn-primary">Consulter la Javadoc</a>
     </div>
     <div class="card">
       <div class="card-icon">&#11015;&#65039;</div>
       <h2>Téléchargement</h2>
-      <p>Téléchargez la dernière version du JAR exécutable incluant toutes les dépendances.</p>
+      <p>Téléchargez la dernière version du JAR.</p>
       <a href="download/Skyjo.jar" class="btn btn-primary" download>Télécharger Skyjo.jar</a>
     </div>
     <div class="card">
@@ -86,7 +86,7 @@
     <h2>Contexte du projet</h2>
     <p>
       Skyjo est un jeu de cartes multijoueur implémenté en Java dans le cadre du cours
-      <strong>INF2050 — Développement logiciel</strong> à l'UQAM. Le jeu supporte de 2 à 4 joueurs
+      <strong>INF2050 — Outils et pratiques de développement logiciel</strong> à l'UQAM. Le jeu supporte de 2 à 4 joueurs
       humains ou robotiques, avec une interface textuelle en ligne de commande.
     </p>
     <p style="margin-bottom:0;">
@@ -107,11 +107,23 @@
       <tr><th>Nom</th><th>Comportement</th><th>Niveau</th></tr>
       <tr><td><code>Keksli</code></td><td>Choisit toujours la première option</td><td>Débutant</td></tr>
       <tr><td><code>MadMax</code></td><td>Choisit une option aléatoire</td><td>Intermédiaire</td></tr>
-      <tr><td><code>S38</code></td><td>Intelligence artificielle avancée</td><td>Expert</td></tr>
+      <tr><td><code>S38</code></td><td>Minimise les valeurs élevées</td><td>Expert</td></tr>
     </table>
     <p style="margin-top:1rem;">Exemples :</p>
     <pre>java -jar Skyjo.jar nom1 Keksli</pre>
     <pre>java -jar Skyjo.jar Keksli MadMax Keksli S38</pre>
+  </section>
+
+  <section>
+    <h2>Règles du jeu</h2>
+    <p>
+      Consulter cette vidéo pour apprendre les règles du jeu.
+    </p>
+    <a href="https://www.youtube.com/watch?v=I5tQDPW30yw&t=1s"
+       class="btn btn-primary"
+       target="_blank">
+      Voir les règles
+    </a>
   </section>
 
   <section>
@@ -139,7 +151,7 @@
       </div>
     </div>
   </section>
-
+  
   <section>
   <h2>Contributeurs</h2>
   <div class="contributors">
