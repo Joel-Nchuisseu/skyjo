@@ -56,9 +56,7 @@ public class Launcher {
          - Keksli : Choisit toujours la première option (Débutant).
          - MadMax : Choisit une option aléatoirement (Intermédiaire).
          - S38    : AI (Expert).
-      
-      Ex: java -jar Skyjo.jar 5 nom1 S38 MadMax Keksli
-      Ex: java -jar Skyjo.jar nom1 nom2 nom3
+         
       """;
 
 
