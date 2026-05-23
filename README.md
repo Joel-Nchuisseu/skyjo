@@ -8,3 +8,8 @@ Mais vous pouvez également télécharger le jar directement en ligne de command
 ```sh
 wget https://joel-nchuisseu.github.io/skyjo/download/Skyjo.jar
 ```
+
+Pour afficher les instructions :
+```sh
+java -jar Skyjo.jar
+```
