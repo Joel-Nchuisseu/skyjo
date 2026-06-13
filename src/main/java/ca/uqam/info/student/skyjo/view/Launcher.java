@@ -46,7 +46,6 @@ public class Launcher {
   private static Integer seed;
   private static final String MSG_ERR = """
       
-      
       Commande: java -jar Skyjo.jar [seed]? [joueur][joueur]+
       
       2 à 4 joueurs.
@@ -57,7 +56,6 @@ public class Launcher {
          - Keksli : Choisit toujours la première option (Débutant).
          - MadMax : Choisit une option aléatoirement (Intermédiaire).
          - S38    : AI (Expert).
-         
       """;
 
 
